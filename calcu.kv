@@ -1,0 +1,124 @@
+#:kivy 2.1.0 
+#:import hex kivy.utils.get_color_from_hex 
+<Calculadora>: 
+    canvas.before: 
+        Color: 
+            rgba: hex('#080202ff') 
+        Rectangle: 
+            pos: self.pos 
+            size: self.size 
+    BoxLayout: 
+        orientation: 'vertical' 
+        Label: 
+            id: error 
+            canvas.before: 
+                Color: 
+                    rgba: hex('#faf8f8ff') 
+                Rectangle: 
+                    pos: self.pos 
+                    size: self.size 
+            size_hint_y: .1 
+            color: 0,0,0,1 
+            font_size: 20 
+        Button: 
+            id: respuesta 
+            size_hint_y: .15 
+            background_normal: '' 
+            background_color: hex('#faf7f7ff') 
+            font_size: 25 
+            text_size: self.size 
+            halign: 'right' 
+            color: 0,0,0,1 
+            on_release: root.respuesta(self.text) 
+        TextInput: 
+            id: exp_inp 
+            multiline: False 
+            font_size: 25 
+            size_hint_y: .25 
+            on_text_validate: root.igual() 
+        GridLayout: 
+            cols: 4 
+            rows: 4 
+            size_hint_y: .8 
+            Button: 
+                id: clear 
+                text: 'C' 
+                on_release: root.borrar(self.text) 
+            Button: 
+                id: clear_entry 
+                text: 'CE' 
+                on_release: root.borrar(self.text) 
+            Button: 
+                id: delate 
+                text: 'Del' 
+                on_release: root.borrar(self.text) 
+            Button: 
+                id: dividir 
+                text: '/' 
+                on_release: root.ids.exp_inp.insert_text(self.text) 
+            Button: 
+                id: siete 
+                text: '7' 
+                on_release: root.ids.exp_inp.insert_text(self.text) 
+            Button: 
+                id: ocho 
+                text: '8' 
+                on_release: root.ids.exp_inp.insert_text(self.text) 
+            Button: 
+                id: nueve 
+                text: '9' 
+                on_release: root.ids.exp_inp.insert_text(self.text) 
+            Button: 
+                id: multiplicar 
+                text: '*' 
+                on_release: root.ids.exp_inp.insert_text(self.text) 
+            Button: 
+                id: cuatro 
+                text: '4' 
+                on_release: root.ids.exp_inp.insert_text(self.text) 
+            Button: 
+                id: cinco 
+                text: '5' 
+                on_release: root.ids.exp_inp.insert_text(self.text) 
+            Button: 
+                id: seis 
+                text: '6' 
+                on_release: root.ids.exp_inp.insert_text(self.text) 
+            Button: 
+                id: restar 
+                text: '-' 
+                on_release: root.ids.exp_inp.insert_text(self.text) 
+            Button: 
+                id: uno 
+                text: '1' 
+                on_release: root.ids.exp_inp.insert_text(self.text) 
+            Button: 
+                id: dos 
+                text: '2' 
+                on_release: root.ids.exp_inp.insert_text(self.text) 
+            Button: 
+                id: tres 
+                text: '3' 
+                on_release: root.ids.exp_inp.insert_text(self.text) 
+            Button: 
+                id: sumar 
+                text: '+' 
+                on_release: root.ids.exp_inp.insert_text(self.text) 
+
+        BoxLayout: 
+            size_hint_y: .2 
+            Button: 
+                id: decimal 
+                text: '.' 
+                size_hint_x: .25 
+                on_release: root.ids.exp_inp.insert_text(self.text) 
+            Button: 
+                id: cero 
+                text: '0' 
+                size_hint_x: .25 
+                on_release: root.ids.exp_inp.insert_text(self.text) 
+            Button: 
+                id: igual 
+                text: '=' 
+                size_hint_x: .5 
+                on_release: root.igual()

@@ -1,0 +1,146 @@
+#:kivy 2.1.0 
+#:import hex kivy.utils.get_color_from_hex 
+<Calculadora>: 
+    canvas.before: 
+        Color: 
+            rgba: hex('#080202ff') 
+        Rectangle: 
+            pos: self.pos 
+            size: self.size 
+    BoxLayout: 
+        orientation: 'vertical' 
+        Label: 
+            id: error 
+            canvas.before: 
+                Color: 
+                    rgba: hex('#100303ff') 
+                Rectangle: 
+                    pos: self.pos 
+                    size: self.size 
+            size_hint_y: .5
+            color: 1,1,1,1 
+            font_size: 20 
+
+        BoxLayout:
+
+            TextInput: 
+                id: exp_inp 
+                multiline: False 
+                font_size: 25 
+                size_hint_y: .5
+                size_hint_x: .3
+                on_text_validate: root.igual()
+
+            Button: 
+                id: respuesta 
+                size_hint_y: .5
+                size_hint_x: .3
+                background_normal: '' 
+                background_color: hex('#faf7f7ff') 
+                font_size: 25 
+                text_size: self.size 
+                halign: 'right' 
+                color: 0,0,0,1 
+                on_release: root.respuesta(self.text)  
+
+
+        GridLayout: 
+            cols: 4 
+            rows: 4 
+            size_hint_y: .8
+            Button: 
+                id: siete 
+                text: '7' 
+                background_color: hex('#f82424ff')
+                on_release: root.ids.exp_inp.insert_text(self.text) 
+            Button: 
+                id: ocho 
+                text: '8' 
+                background_color: hex('#f82424ff')
+                on_release: root.ids.exp_inp.insert_text(self.text) 
+            Button: 
+                id: nueve 
+                text: '9' 
+                background_color: hex('#f82424ff')
+                on_release: root.ids.exp_inp.insert_text(self.text) 
+            Button: 
+                id: dividir 
+                text: '/' 
+                background_color: hex('#f82424ff')
+                on_release: root.ids.exp_inp.insert_text(self.text) 
+            Button: 
+                id: cuatro 
+                text: '4' 
+                background_color: hex('#f82424ff')
+                on_release: root.ids.exp_inp.insert_text(self.text) 
+            Button: 
+                id: cinco 
+                text: '5'
+                background_color: hex('#f82424ff') 
+                on_release: root.ids.exp_inp.insert_text(self.text) 
+            Button: 
+                id: seis 
+                text: '6' 
+                background_color: hex('#f82424ff')
+                on_release: root.ids.exp_inp.insert_text(self.text) 
+            Button: 
+                id: multiplicar 
+                text: '*' 
+                background_color: hex('#f82424ff')
+                on_release: root.ids.exp_inp.insert_text(self.text)
+            Button: 
+                id: uno 
+                text: '1' 
+                background_color: hex('#f82424ff')
+                on_release: root.ids.exp_inp.insert_text(self.text) 
+            Button: 
+                id: dos 
+                text: '2' 
+                background_color: hex('#f82424ff')
+                on_release: root.ids.exp_inp.insert_text(self.text) 
+            Button: 
+                id: tres 
+                text: '3' 
+                background_color: hex('#f82424ff')
+                on_release: root.ids.exp_inp.insert_text(self.text) 
+            Button: 
+                id: restar 
+                text: '-' 
+                background_color: hex('#f82424ff')
+                on_release: root.ids.exp_inp.insert_text(self.text) 
+
+        BoxLayout: 
+            size_hint_y: .2  
+            Button: 
+                id: cero 
+                text: '0' 
+                background_color: hex('#f82424ff')
+                size_hint_x: .25 
+                on_release: root.ids.exp_inp.insert_text(self.text)
+            Button: 
+                id: sumar 
+                text: '+' 
+                background_color: hex('#f82424ff')
+                size_hint_x: .25 
+                on_release: root.ids.exp_inp.insert_text(self.text) 
+            Button: 
+                id: igual 
+                text: '='
+                background_color: hex('#f82424ff')
+                size_hint_x: .5 
+                on_release: root.igual()
+        BoxLayout: 
+            size_hint_y: .2  
+            Button: 
+                id: clear 
+                text: 'C' 
+                background_color: hex('#f1e10bff')
+                size_hint_x: .5 
+                on_release: root.borrar(self.text) 
+            Button: 
+                id: clear_entry 
+                text: 'CE' 
+                background_color: hex('#f1e10bff')
+                size_hint_x: .5 
+                on_release: root.borrar(self.text) 
+            
